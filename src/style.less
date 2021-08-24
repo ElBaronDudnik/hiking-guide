@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
+
+@bg: #0b1d26;
+@white: #fff;
+@accent: #FBD784;
+
+@font-face {
+  font-family: ChronicleDisplay;
+  src: url("assets/fonts/ChronicleDisplayRoman.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url("assets/fonts/Gilroy-ExtraBold.otf") format("opentype");
+}
+
+@keyframes topDown {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(5px);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes leftRight {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(20px);
+  }
+  40% {
+    transform: translateX(0px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+a {
+  color: @white;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  cursor: pointer;
+
+  li {
+    padding-right: 20px;
+    &:hover {
+      a {
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+      a:before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+    a {
+      position: relative;
+      opacity: 0.8;
+    }
+  }
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+}
+
+.main-container {
+  width: 100%;
+  background: @bg;
+  color: @white;
+  font-family: 'Khula', sans-serif;
+}
+
+h4 {
+  color: @accent;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+h4:before {
+  content: '';
+  background-color: @accent;
+  display: inline-block;
+  width: 4rem;
+  height: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.logo {
+  position: relative;
+  font-family: ChronicleDisplay, sans-serif;
+  color: @white;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0 50%;
+    }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient {
+  //background-image: linear-gradient(-45deg, rgba(58, 89, 100, 0.9), rgba(66, 90, 102, 0.58), rgba(149, 161, 167, 0.33), rgba(236, 239, 241, 0.1));
+  //background-size: 400% 400%;
+  //position: absolute;
+  //min-height: 1886px;
+  //width: 100%;
+  //animation: 6s linear infinite gradient-move;
+}
+
+.top-container {
+  width: 100%;
+  min-height: 104rem;
+  background-color: @bg;
+  background-image:
+    linear-gradient(330.24deg, rgba(11, 29, 38, 0) 31.06%, #0B1D26 108.93%),
+    linear-gradient(180deg, rgba(11, 29, 38, 0) 63%, #0B1D26 90%),
+    url('./assets/images/hiking3.png'),
+    url('./assets/images/hiking2.png'),
+    url('./assets/images/hiking1.png');
+  background-position:
+    0 0, 0 100%,
+    top 44rem center,
+    top 26rem center,
+    top center;
+  background-size: 100% 55%, 100% 85%, 100% 60%;
+  background-repeat: no-repeat;
+
+  &_navigation {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 3rem 4.4rem;
+  }
+
+  ul {
+    display: flex;
+    font-size: 1.2rem;
+  }
+
+  &_account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
+
+  .main-content {
+    position: relative;
+    display: flex;
+    padding: 4.72rem 4.44rem 0;
+    justify-content: space-between;
+    align-items: center;
+
+    &_social ul {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        padding-bottom: 20px;
+      }
+    }
+
+    .social_header {
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-down {
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .scroll-down__button {
+      vertical-align: top;
+      transition: all 1s ease;
+      animation: 2s infinite topDown;
+    }
+
+    &_header {
+      width: 52.7rem;
+      h1 {
+        font-family: ChronicleDisplay, sans-serif;
+        font-size: 4.8rem;
+        text-transform: capitalize;
+        margin: 1.6rem 0;
+      }
+    }
+
+    &_slider ul {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      font-size: 1.2rem;
+      position: fixed;
+      right: 4.44rem;
+      top: 31%;
+
+      li {
+        border-right: 1px solid @white;
+        padding-top: 20px;
+        transition: all 1s ease;
+      }
+
+      li.active {
+        border-width: 4px;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+}
+
+.page-one, .page-two, .page-three {
+  padding: 3.8rem 12.72rem;
+  display: flex;
+
+  .page_content {
+    flex: 2;
+    padding: 7.7rem 6.3rem 8.3rem 7.7rem;
+  }
+
+  .page_image {
+    flex: 1;
+
+    img {
+      width: 30rem;
+      height: 40rem;
+    }
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 3.55rem;
+    font-family: ChronicleDisplay, sans-serif;
+    margin: 1.6rem 0;
+  }
+
+  p {
+    font-weight: 700;
+    line-height: 1.7rem;
+  }
+
+  .read-more {
+    color: @accent;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &__button {
+      vertical-align: middle;
+      animation: 2s infinite leftRight;
+    }
+  }
+
+  &:before {
+    content: '01';
+    position: absolute;
+    font-weight: bold;
+    font-size: 13.3rem;
+    opacity: 0.1;
+    font-family: Gilroy, sans-serif;
+  }
+}
+
+.page-two {
+  .page_content {
+    order: 2;
+  }
+
+  &:before {
+    content: '02';
+    right: 46%
+  }
+}
+
+.page-three:before {
+  content: '03'
+}
+
+.page-one {
+  margin-top: -25rem;
+}
+
+footer {
+  display: flex;
+  padding: 3.5rem 4.4rem;
+
+  .big-column {
+    flex: 3
+  }
+
+  .small-column {
+    flex: 1;
+  }
+
+  .slogan {
+    margin: 1.1rem 0 7.4rem;
+    width: 30%;
+    font-weight: 700;
+  }
+
+  .copyright {
+    color: #b1b1b1;
+  }
+
+  header {
+    color: @accent;
+    font-size: 1.3rem;
+    line-height: 1.78rem;
+    font-weight: 700;
+  }
+
+  ul li {
+    margin: 1.1rem 0;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+  .page-one, .page-two, .page-three {
+    padding: 3rem 10rem;
+
+    .page-content {
+      padding: 10px 20px;
+    }
+  }
+}

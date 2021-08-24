@@ -1,0 +1,16 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "max-line-length": [
+    true,
+    140
+  ],
+  "no-console": false,
+  "quotemark": [
+    true,
+    "single"
+  ],
+  "singleQuote": true
+}
