@@ -88,7 +88,6 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'app'),
     open: true,
     compress: true,
     hot: true,
@@ -131,7 +130,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
+        test: /\.(?:|gif|png|jpg|jpeg|svg|webp)$/,
         use: [{
           loader: 'file-loader',
           options: {

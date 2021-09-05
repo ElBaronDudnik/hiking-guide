@@ -156,9 +156,9 @@ h4:before {
   background-image:
     linear-gradient(330.24deg, rgba(11, 29, 38, 0) 31.06%, #0B1D26 108.93%),
     linear-gradient(180deg, rgba(11, 29, 38, 0) 63%, #0B1D26 90%),
-    url('./assets/images/hiking3.png'),
-    url('./assets/images/hiking2.png'),
-    url('./assets/images/hiking1.png');
+    url('./assets/images/hiking3.webp'),
+    url('./assets/images/hiking2.webp'),
+    url('./assets/images/hiking1.webp');
   background-position:
     0 0, 0 100%,
     top 44rem center,
@@ -364,21 +364,259 @@ footer {
   }
 }
 
+// burger menu
+
+.burger-menu {
+  display: none;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(-250px, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-250px, 0, 0);
+    visibility: hidden;
+  }
+}
+
+.b-nav {
+  position: absolute;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 29, 38, 0.95);
+
+  &:not(.open) {
+    visibility: hidden;
+  }
+
+  li {
+    list-style-type: none;
+    padding: 10px;
+    text-align: left;
+    transform: translateX(-250px);
+  }
+
+  li:not(.open) {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: slideOutLeft;
+  }
+
+  li:first-child {
+    padding-top: 120px;
+  }
+
+  &.open {
+    visibility: visible;
+
+    li {
+      animation-duration: 0.4s;
+      animation-fill-mode: both;
+      animation-name: slideInLeft;
+    }
+  }
+}
+
+.b-link {
+  background: transparent;
+  border-left: whitesmoke solid 2px;
+  font-size: 24px;
+  font-weight: 300;
+  margin-left: 30px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  width: auto;
+  padding-left: 10px;
+
+  &:hover,
+  &--active {
+    border-left: whitesmoke solid 2px;
+    padding-left: 30px;
+  }
+}
+
+.b-menu {
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  padding-left: 15px;
+  padding-top: 15px;
+  position: relative;
+  transition: all 0.4s ease;
+  user-select: none;
+  width: 60px;
+  z-index: 12;
+}
+
+.b-bun {
+  background: whitesmoke;
+  position: relative;
+  transition: all 0.4s ease;
+
+  &--top {
+    height: 2px;
+    top: 0;
+    width: 25px;
+  }
+
+  &--mid {
+    height: 2px;
+    top: 8px;
+    width: 25px;
+  }
+
+  &--bottom {
+    height: 2px;
+    top: 16px;
+    width: 25px;
+  }
+}
+
+.b-container {
+  height: 60px;
+  right: 30px;
+  position: absolute;
+  top: 15px;
+
+  &:hover:not(.open) {
+    .bun-top,
+    .bun-mid,
+    .bun-bottom {
+      background: whitesmoke;
+    }
+  }
+
+  &.open {
+    .b-main {
+      border: whitesmoke solid 2px;
+    }
+
+    .b-bun--top {
+      background: whitesmoke;
+      top: 9px;
+      transform: rotate(45deg);
+    }
+
+    .b-bun--mid {
+      opacity: 0;
+    }
+
+    .b-bun--bottom {
+      background: whitesmoke;
+      top: 5px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// end of burger menu
+
 @media screen and (max-width: 1600px) {
   html {
     font-size: 14px;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   html {
     font-size: 12px;
   }
   .page-one, .page-two, .page-three {
-    padding: 3rem 10rem;
+    padding: 3rem 10rem 3rem 5rem;
 
-    .page-content {
+    .page_content {
       padding: 10px 20px;
     }
+  }
+  .top-container .main-content_slider ul {
+    right: 2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .page_content {
+    order: 1;
+  }
+
+  .page-one .page_image img, .page-two .page_image img, .page-three .page_image img {
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-one .page_image img {
+    object-position: bottom;
+  }
+
+  .top-container .main-content_header h1 {
+    font-size: 3rem;
+  }
+
+  .main-content_social {
+    margin-right: 20px;
+  }
+
+  .top-container .main-content {
+    padding: 7rem 4.44rem 0;
+  }
+
+  footer .slogan {
+    margin: 1.1rem 0 1.4rem;
+    width: 80%;
+  }
+
+  .copyright {
+    margin-bottom: 10px;
+  }
+
+  .small-column {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .top-container ul, .top-container_account, .main-content_social, .main-content_slider {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  footer .slogan {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .page-one .page_image img, .page-two .page_image img, .page-three .page_image img {
+    width: 90%;
+    height: 18rem;
+  }
+
+  .page-one h2, .page-two h2, .page-three h2 {
+    font-size: 2.5rem;
+  }
+
+  .page-one, .page-two, .page-three {
+    padding: 3rem 4rem 3rem 5rem;
   }
 }

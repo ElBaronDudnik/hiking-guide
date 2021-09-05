@@ -21,42 +21,55 @@ export function debounce(func: Function, wait: number, immediate: boolean): any 
 const container = document.querySelector('.main-container');
 const pages = document.querySelectorAll('.page');
 const slider = document.querySelectorAll('.slider_page');
+let currentPage = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   AOS.init({
     duration: 1500,
   });
 
-  let i = 0;
   scrollToPage(0);
   container?.addEventListener('mousewheel',
     debounce((e: any) => {
       requestAnimationFrame(() => {
         if (e.deltaY > 0) {
-          scrollToPage(i);
-          if (i < pages.length - 1) i += 1;
+          scrollToPage(currentPage);
+          if (currentPage < pages.length - 1) currentPage += 1;
         } else {
-          if (i > 0) i -= 1;
-          scrollToPage(i);
+          if (currentPage > 0) currentPage -= 1;
+          scrollToPage(currentPage);
         }
       })
     }, 100, true));
 
   const scrollDownButton = document.querySelector('.scroll-down');
   scrollDownButton?.addEventListener('click', () => {
+    currentPage = 1;
     scrollToPage(1);
   });
 
-  slider.forEach(sliderElement =>
-    sliderElement.addEventListener('click', (e) => {
-      scrollToPage(+(sliderElement as HTMLElement)?.dataset?.pageNumber);
+  slider.forEach((sliderElement) =>
+    sliderElement.addEventListener('click', () => {
+      currentPage = +(sliderElement as HTMLElement)?.dataset?.pageNumber;
+      scrollToPage(currentPage);
   }));
 });
 
 function scrollToPage(i: number) {
-  console.log('scrool', i)
   const top = (pages[i] as HTMLElement).offsetTop;
   window.scrollTo({ top, behavior: 'smooth' });
   slider.forEach(item => item.classList.remove('active'));
   slider[i]?.classList.add('active');
 }
+
+(function() {
+  const burgerMenu = document.querySelector('.b-menu');
+  const burgerContain = document.querySelector('.b-container');
+  const burgerNav = document.querySelector('.b-nav');
+
+  burgerMenu?.addEventListener('click', function toggleClasses() {
+    [burgerContain, burgerNav].forEach(function (el) {
+      el?.classList.toggle('open');
+    });
+  }, false);
+})();
