@@ -50,11 +50,14 @@
   "dependencies": {
     "aos": "^2.3.4",
     "focus-visible": "^5.2.0",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^6.0.0",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
     "normalize.css": "^8.0.1",
     "ts-loader": "^9.1.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "webpack-merge": "4.2.1"
   }
 }

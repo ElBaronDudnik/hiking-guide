@@ -14,6 +14,7 @@ const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}
 
 const optimization = () => {
   const configObj = {
+    minimize: true,
     splitChunks: {
       chunks: 'all'
     }
