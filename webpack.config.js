@@ -60,16 +60,8 @@ const plugins = () => {
             ["gifsicle", { interlaced: true }],
             ["jpegtran", { progressive: true }],
             ["optipng", { optimizationLevel: 5 }],
-            [
-              "svgo",
-              {
-                plugins: [
-                  {
-                    removeViewBox: false
-                  }
-                ]
-              }
-            ]
+            ["imagemin-webp", { quality: 50 }],
+            ["svgo", { plugins: [{ removeViewBox: false }]}]
           ]
         }
       })
